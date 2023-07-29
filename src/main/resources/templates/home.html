@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Prime numbers</title>
 </head>
 <body>
+  <form method="post">
     <label for="boundary">Boundary: </label>
-    <input type="text" id="boundary" name="boundary"/>
+    <input type="text" id="boundary" name="boundary" th:value="${boundary}"/>
     <input type="submit" value="Calculate"/>
+  </form>
 </body>
 </html>

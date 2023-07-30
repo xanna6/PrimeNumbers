@@ -5,11 +5,21 @@
     <meta charset="UTF-8">
     <title>Prime numbers</title>
 </head>
-<body>
-  <form method="post">
-    <label for="boundary">Boundary: </label>
-    <input type="text" id="boundary" name="boundary" th:value="${boundary}"/>
-    <input type="submit" value="Calculate"/>
-  </form>
+<body style="font-size: larger">
+    <div style="width: 500px; margin: 20px;">
+      <form method="post">
+          <label for="boundary">Boundary: </label>
+          <input type="text" id="boundary" name="boundary" th:value="${boundary}"/>
+          <input type="submit" value="Calculate"/><br/>
+          <span style="margin-top: 5px; color: red;" th:text="${error}"></span>
+      </form>
+
+        <div th:if="${not #lists.isEmpty(result)}" style="margin-top: 20px;">
+            Result: <br/>
+            <span th:each="number, iStat : ${result}"
+                   th:text="${!iStat.last} ? ${number} + ', ': ${number}">
+            </span>
+        </div>
+    </div>
 </body>
 </html>

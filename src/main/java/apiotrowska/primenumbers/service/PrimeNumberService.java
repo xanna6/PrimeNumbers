@@ -12,20 +12,20 @@ public class PrimeNumberService {
         List<Integer> primeNumbers = new ArrayList<>();
         boolean[] sieve = new boolean[upperBoundary];
 
-        for (int i = 2; i < sieve.length; i++) {
+        for (int i = 1; i < sieve.length; i++) {
             sieve[i] = true;
         }
-        for (int i = 2; i < Math.sqrt(upperBoundary); i++) {
+        for (int i = 1; i < Math.sqrt(sieve.length); i++) {
             if(sieve[i]) {
-                for(int j = (i*i); j < upperBoundary; j = j+i) {
-                    sieve[j] = false;
+                for(int j = (i+1)*(i+1); j <= sieve.length; j = j+i+1) {
+                    sieve[j-1] = false;
                 }
             }
         }
 
-        for (int i=2; i < sieve.length; i++) {
+        for (int i=1; i < sieve.length; i++) {
             if (sieve[i]) {
-                primeNumbers.add(i);
+                primeNumbers.add(i+1);
             }
         }
         return primeNumbers;
